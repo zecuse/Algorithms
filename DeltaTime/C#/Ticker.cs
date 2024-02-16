@@ -70,7 +70,7 @@ public class Ticker()
 	/// A positive <see cref="TimeSpan"/> moves time forward and negative backward.
 	/// </summary>
 	/// <param name="offset">A <see cref="TimeSpan"/> representing how much time should change.</param>
-	public void Offset(TimeSpan offset) => OffsetTime = offset;
+	public void Offset(TimeSpan offset) => OffsetTime += offset;
 
 	/// <summary>
 	/// Add an <see cref="Updatable"/> to begin receiving deltaTime updates.
