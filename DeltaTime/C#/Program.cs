@@ -168,9 +168,14 @@ class TickerDemo1 : Updatable
 {
 	protected override int Order => 1;
 
+	/// <summary>
+	/// Text is formatted to the right to make reading the console a bit easier.
+	/// </summary>
+	/// <param name="deltaTime">The duration between tick iterations.</param>
 	public override void Update(double deltaTime)
 	{
-		Console.WriteLine($"{GetType()}: {deltaTime:N6}");
+		string output = $"{GetType()}: {deltaTime:N6}";
+		Console.WriteLine($"{output,60}");
 	}
 }
 
@@ -181,8 +186,13 @@ class TickerDemo2 : Updatable
 {
 	protected override int Order => 2;
 
+	/// <summary>
+	/// Text is formatted to the right to make reading the console a bit easier.
+	/// </summary>
+	/// <param name="deltaTime">The duration between tick iterations.</param>
 	public override void Update(double deltaTime)
 	{
-		Console.WriteLine($"{GetType()}: {deltaTime:F6}");
+		string output = $"{GetType()}: {deltaTime:N6}";
+		Console.WriteLine($"{output,60}");
 	}
 }

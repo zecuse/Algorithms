@@ -101,7 +101,7 @@ public class Ticker()
 	public void PerformTick()
 	{
 		TimeSpan now = Timer.Elapsed;
-		double deltaTime = now.TotalMilliseconds - PrevTime.TotalMilliseconds + OffsetTime.TotalMilliseconds;
+		double deltaTime = now.TotalSeconds - PrevTime.TotalSeconds + OffsetTime.TotalSeconds;
 		OffsetTime = TimeSpan.Zero;
 
 		foreach (var updatable in Updatables)
