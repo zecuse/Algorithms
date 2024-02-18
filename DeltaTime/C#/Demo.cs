@@ -1,13 +1,12 @@
 ﻿using DeltaTime;
 using System.Collections.Concurrent;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
 /// <summary>
 /// A simple program to demonstrate the DeltaTime project.
 /// </summary>
-class Program
+class Demo
 {
 	/// <summary>
 	/// A token source to communitcate between the user input thread and ticking thread.<br/>
