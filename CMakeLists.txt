@@ -1,4 +1,4 @@
-﻿cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required (VERSION 3.8) 
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -12,8 +12,10 @@ endif()
 project (Algorithms)
 
 add_library(cxx_setup INTERFACE)
-target_compile_options(cxx_setup INTERFACE -Wall)
-if (CMAKE_COMPILER_IS_GNUCXX)
+if (${is_msvc})
+	target_compile_options(cxx_setup INTERFACE -W4)
+elseif (CMAKE_COMPILER_IS_GNUCXX)
+	target_compile_options(cxx_setup INTERFACE -Wall)
 	target_compile_options(cxx_setup INTERFACE -Wextra -Wpedantic)
 endif()
 target_compile_features(cxx_setup INTERFACE cxx_std_20)
