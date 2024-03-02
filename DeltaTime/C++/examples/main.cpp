@@ -7,7 +7,8 @@ using namespace DeltaTime;
 int main()
 {
 	cout << "Hello CMake." << endl;
-	Ticker t;
-	t.TickerTest();
+	Updatable up;
+	Ticker ti;
+	ti.ReceiveUpdatable(up);
 	return 0;
 }
