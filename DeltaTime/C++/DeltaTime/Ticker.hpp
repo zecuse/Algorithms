@@ -12,7 +12,7 @@ class Ticker
 	Timepiece::seconds prevTime = {};
 	Timepiece::seconds offsetTime = {};
 public:
-	std::multiset<Updatable> Updatables = {};
+	std::multiset<Updatable*> Updatables = {};
 	inline bool IsRunning() const
 	{ return timer.IsRunning(); }
 	void Start();
@@ -20,8 +20,8 @@ public:
 	void Pause();
 	void Reset();
 	Timepiece::seconds GetElapsed() const;
-	void Offset(const Timepiece::TimeSpan &);
-	void ReceiveUpdatable(DeltaTime::Updatable updatable);
+	void Offset(const Timepiece::TimeSpan&);
+	void ReceiveUpdatable(DeltaTime::Updatable*);
 	void PerformTick();
 };
 }

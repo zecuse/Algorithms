@@ -34,7 +34,7 @@ void DeltaTime::Ticker::Offset(const TimeSpan &span)
 	offsetTime += span.Count();
 }
 
-void DeltaTime::Ticker::ReceiveUpdatable(DeltaTime::Updatable updatable)
+void DeltaTime::Ticker::ReceiveUpdatable(DeltaTime::Updatable *updatable)
 {
 	if (Updatables.empty())
 		Updatables.insert(updatable);
@@ -53,6 +53,6 @@ void DeltaTime::Ticker::PerformTick()
 	offsetTime = {};
 
 	for (auto &updatable : Updatables)
-		const_cast<Updatable &>(updatable).Update(deltaTime.count());
+		updatable->Update(deltaTime.count());
 	prevTime = timer.GetElapsed();
 }
