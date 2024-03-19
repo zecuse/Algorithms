@@ -22,6 +22,8 @@ target_compile_features(cxx_setup INTERFACE cxx_std_20)
 
 if (ENABLE_BUILD_TESTING)
 	enable_testing()
-endif()
+	find_package(GTest REQUIRED)
+endif() 
 
+add_subdirectory (C++Utilities)
 add_subdirectory (DeltaTime/C++)
