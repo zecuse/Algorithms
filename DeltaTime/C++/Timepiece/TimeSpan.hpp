@@ -5,24 +5,24 @@ namespace Timepiece
 {
 using namespace std;
 using namespace chrono;
-typedef duration<double> sec;
-typedef duration<double, ratio_multiply<ratio<60>, sec::period>> min;
-typedef duration<double, ratio_multiply<ratio<60>, min::period>> hr;
-typedef duration<double, ratio_multiply<ratio<24>, hr::period>> day;
-typedef duration<double, ratio_multiply<sec::period, ratio<1000>>> mil;
-typedef duration<double, ratio_multiply<mil::period, ratio<1000>>> mic;
-typedef duration<double, ratio_multiply<mic::period, ratio<1000>>> na;
+typedef duration<double> sect;
+typedef duration<double, ratio_multiply<ratio<60>, sect::period>> mint;
+typedef duration<double, ratio_multiply<ratio<60>, mint::period>> hrt;
+typedef duration<double, ratio_multiply<ratio<24>, hrt::period>> dayt;
+typedef duration<double, ratio_multiply<sect::period, ratio<1000>>> milt;
+typedef duration<double, ratio_multiply<milt::period, ratio<1000>>> mict;
+typedef duration<double, ratio_multiply<mict::period, ratio<1000>>> nant;
 
 struct TimeSpan
 {
-	day days{ 0 };
-	hr hours{ 0 };
-	min minutes{ 0 };
-	sec seconds{ 0 };
-	mil millis{ 0 };
-	mic micros{ 0 };
-	na nanos{ 0 };
-	inline sec Count() const
+	dayt days{ 0 };
+	hrt hours{ 0 };
+	mint minutes{ 0 };
+	sect seconds{ 0 };
+	milt millis{ 0 };
+	mict micros{ 0 };
+	nant nanos{ 0 };
+	inline sect Count() const
 	{ return days + hours + minutes + seconds + millis + micros + nanos; }
 };
 }
