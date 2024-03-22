@@ -23,20 +23,40 @@ struct ConcurrentData
 	Queue<TimeSpan> AddOffset = {};
 };
 
+static void PrintMenu(int opt = 1)
+{
+	switch (opt)
+	{
+	case 1:
+		cout << "Options include:\n";
+		cout << "quit: Stop all execution\n";
+		cout << "add: Add an Updatable to the ticker\n";
+		cout << "offset: Add an offset time to the ticker\n";
+		cout << "help: Reprint this list";
+		break;
+	case 2:
+		cout << "1 for Demo1\n";
+		cout << "2 for Demo2";
+		break;
+	case 3:
+		cout << "Provide an offset time, negative values allowed, at least 1 duration unit\n";
+		cout << "Allowed units: days(d), hours(h), minutes(min), seconds(s), milliseconds(mil), microseconds(mic)";
+		break;
+	}
+	cout << endl;
+}
+
 static void UserInput(stop_source src, ConcurrentData &data)
 {
 	RE2 pattern(R"((-?\d+)(\p{L}+))");
 	string input;
 
-	cout << "Options include:\n";
-	cout << "quit: Stop all execution\n";
-	cout << "add: Add an Updatable to the ticker\n";
-	cout << "offset: Add an offset time to the ticker\n";
-
 	while (getline(cin, input))
 	{
 		input = trim(toLower(input));
-		if (input == "quit")
+		if (input == "help")
+			PrintMenu(1);
+		else if (input == "quit")
 		{
 			src.request_stop();
 			cout << "Quitting" << endl;
@@ -44,7 +64,7 @@ static void UserInput(stop_source src, ConcurrentData &data)
 		}
 		else if (input == "add")
 		{
-			cout << "1 for Demo1\n2 for Demo2\n";
+			PrintMenu(2);
 			string choice;
 			getline(cin, choice);
 			choice = trim(choice);
@@ -65,8 +85,7 @@ static void UserInput(stop_source src, ConcurrentData &data)
 		}
 		else if (input == "offset")
 		{
-			cout << "Provide an offset time, negative values allowed, at least 1 duration unit\n";
-			cout << "Allowed units: days(d), hours(h), minutes(min), seconds(s), milliseconds(mil), microseconds(mic)\n";
+			PrintMenu(3);
 			string time;
 			getline(cin, time);
 
@@ -130,6 +149,7 @@ int main()
 {
 	stop_source src;
 	ConcurrentData data;
+	PrintMenu(1);
 	jthread ui(UserInput, src, ref(data));
 	jthread tick(DoTicking, src.get_token(), ref(data));
 	return 0;
