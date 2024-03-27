@@ -1,4 +1,4 @@
-﻿cmake_minimum_required (VERSION 3.8) 
+﻿cmake_minimum_required (VERSION 3.8)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -22,12 +22,12 @@ target_compile_features(cxx_setup INTERFACE cxx_std_20)
 
 if (ENABLE_BUILD_TESTING)
 	enable_testing()
-	find_package(GTest REQUIRED)
+	find_package(gtest REQUIRED)
 endif() 
 
-if (EXISTS C++Utilities/CMakeLists.txt)
+if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/C++Utilities/)
 	add_subdirectory (C++Utilities)
 endif()
-if (EXISTS DeltaTime/CMakeLists.txt)
+if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/DeltaTime/)
 	add_subdirectory (DeltaTime/C++)
 endif()
