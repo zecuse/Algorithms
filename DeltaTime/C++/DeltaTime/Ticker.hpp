@@ -9,8 +9,8 @@ namespace DeltaTime
 class Ticker
 {
 	Timepiece::Stopwatch timer = {};
-	Timepiece::seconds prevTime = {};
-	Timepiece::seconds offsetTime = {};
+	Timepiece::secs prevTime = {};
+	Timepiece::secs offsetTime = {};
 public:
 	std::multiset<Updatable*> Updatables = {};
 	inline bool IsRunning() const
@@ -19,7 +19,7 @@ public:
 	void Restart();
 	void Pause();
 	void Reset();
-	Timepiece::seconds GetElapsed() const;
+	Timepiece::secs GetElapsed() const;
 	void Offset(const Timepiece::TimeSpan&);
 	void ReceiveUpdatable(DeltaTime::Updatable*);
 	void PerformTick();

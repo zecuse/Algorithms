@@ -24,14 +24,14 @@ void DeltaTime::Ticker::Reset()
 	timer.Reset();
 }
 
-Timepiece::seconds DeltaTime::Ticker::GetElapsed() const
+Timepiece::secs DeltaTime::Ticker::GetElapsed() const
 {
 	return timer.GetElapsed();
 }
 
 void DeltaTime::Ticker::Offset(const TimeSpan &span)
 {
-	offsetTime += span.Count();
+	offsetTime += span.Count<secs>();
 }
 
 void DeltaTime::Ticker::ReceiveUpdatable(DeltaTime::Updatable *updatable)
@@ -49,7 +49,7 @@ void DeltaTime::Ticker::ReceiveUpdatable(DeltaTime::Updatable *updatable)
 void DeltaTime::Ticker::PerformTick()
 {
 	auto now = timer.GetElapsed();
-	Timepiece::seconds deltaTime = now - prevTime + offsetTime;
+	Timepiece::secs deltaTime = now - prevTime + offsetTime;
 	offsetTime = {};
 
 	for (auto &updatable : Updatables)

@@ -109,7 +109,7 @@ static void UserInput(stop_source src, ConcurrentData &data)
 					mic = val;
 			}
 
-			TimeSpan offset = { .days = dayt{d}, .hours = hrt{h}, .minutes = mint{min}, .seconds = sect{s}, .millis = milt{mil}, .micros = mict{mic} };
+			TimeSpan offset = { .days = das{d}, .hours = hrs{h}, .minutes = mins{min}, .seconds = secs{s}, .millis = ms{mil}, .micros = us{mic} };
 			data.AddOffset.push(offset, 1s);
 		}
 	}

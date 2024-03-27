@@ -9,10 +9,16 @@ void Timepiece::Stopwatch::Start()
 		StartTime = steady_clock::now();
 }
 
+void Timepiece::Stopwatch::Lap()
+{
+	LapTimes.push_back(steady_clock::now() - StartTime);
+}
+
 void Timepiece::Stopwatch::Restart()
 {
 	StartTime = steady_clock::now();
 	ElapsedTime = {};
+	LapTimes = {};
 }
 
 void Timepiece::Stopwatch::Pause()
@@ -25,9 +31,10 @@ void Timepiece::Stopwatch::Reset()
 {
 	StartTime = {};
 	ElapsedTime = {};
+	LapTimes = {};
 }
 
-Timepiece::seconds Timepiece::Stopwatch::GetElapsed() const
+Timepiece::secs Timepiece::Stopwatch::GetElapsed() const
 {
 	auto result = ElapsedTime;
 	if (IsRunning())

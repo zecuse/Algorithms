@@ -1,0 +1,7 @@
+<map id="DeltaTime::Updatable" name="DeltaTime::Updatable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="103,5,263,187"/>
+<area shape="rect" id="Node000002" href="$class_ticker_demo_1_1_ticker_demo1.html" title=" " alt="" coords="5,235,171,341"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,201,116,236,111,234,129,199"/>
+<area shape="rect" id="Node000003" href="$class_ticker_demo_1_1_ticker_demo2.html" title=" " alt="" coords="195,235,360,341"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="236,199,254,234,249,236,232,201"/>
+</map>

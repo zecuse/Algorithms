@@ -1,0 +1,8 @@
+<map id="E:/Dev/MyProjects/Algorithms/DeltaTime/C++/Timepiece/Stopwatch.hpp" name="E:/Dev/MyProjects/Algorithms/DeltaTime/C++/Timepiece/Stopwatch.hpp">
+<area shape="rect" id="Node000001" title="A data structure that steadily tracks the passage of time." alt="" coords="51,5,247,64"/>
+<area shape="rect" id="Node000002" href="$_time_span_8hpp.html" title="A data type representing a span of time from days to nanoseconds." alt="" coords="5,112,173,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,66,108,101,104,98,127,63"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="119,187,179,213"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="171,63,187,99,190,119,188,139,170,175,166,173,182,138,184,119,181,100,166,65"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,138,131,173,127,177,97,141"/>
+</map>
