@@ -21,8 +21,9 @@ endif()
 target_compile_features(cxx_setup INTERFACE cxx_std_20)
 
 if (ENABLE_BUILD_TESTING)
+	list(APPEND CMAKE_PREFIX_PATH "C:/Program Files (x86)/googletest-distribution")
 	enable_testing()
-	find_package(gtest REQUIRED)
+	find_package(GTest REQUIRED)
 endif() 
 
 if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/C++Utilities/)
