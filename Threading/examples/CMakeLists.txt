@@ -1,8 +1,10 @@
-add_executable(ThreadingDemo main.cpp)
+add_executable(SimpleCondVar SimpleCondVar.cpp)
+target_include_directories(SimpleCondVar PUBLIC ${PROJECT_SOURCE_DIR})
 
-target_link_libraries(ThreadingDemo PRIVATE Concurrent)
-target_include_directories(ThreadingDemo PUBLIC ${PROJECT_SOURCE_DIR})
+add_executable(SimpleSemaphore SimpleSemaphore.cpp)
+target_include_directories(SimpleSemaphore PUBLIC ${PROJECT_SOURCE_DIR})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET ThreadingDemo PROPERTY CXX_STANDARD 20)
+  set_property(TARGET SimpleCondVar PROPERTY CXX_STANDARD 20)
+  set_property(TARGET SimpleSemaphore PROPERTY CXX_STANDARD 20)
 endif() 
