@@ -10,9 +10,13 @@ target_include_directories(SimpleSemaphore PUBLIC ${PROJECT_SOURCE_DIR})
 add_executable(SingleProdMultiConsSema SingleProdMultiConsSema.cpp)
 target_include_directories(SingleProdMultiConsSema PUBLIC ${PROJECT_SOURCE_DIR})
 
+add_executable(MultiProdSingleConsSema MultiProdSingleConsSema.cpp)
+target_include_directories(MultiProdSingleConsSema PUBLIC ${PROJECT_SOURCE_DIR})
+
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET SimpleCondVar PROPERTY CXX_STANDARD 20)
   set_property(TARGET SingleProdMultiConsCV PROPERTY CXX_STANDARD 20)
   set_property(TARGET SimpleSemaphore PROPERTY CXX_STANDARD 20)
   set_property(TARGET SingleProdMultiConsSema PROPERTY CXX_STANDARD 20)
+  set_property(TARGET MultiProdSingleConsSema PROPERTY CXX_STANDARD 20)
 endif() 
