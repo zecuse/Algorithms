@@ -35,11 +35,12 @@ static void output(S msg, I data, Args... args)
 static void consumer(int id, int n)
 {
     int min = 1, max = 1000;
-    default_random_engine eng(random_device());
+    random_device randev;
+    default_random_engine eng(randev());
     uniform_int_distribution dist(min, max);
     unique_lock<mutex> ul(mut);
     int want = 0, debt = 0;
-    while (!marketClosed)
+    while (!marketClosed && n > 0)
     {
         theConsumers.wait(ul, []() { return !inProgress; });
         inProgress = true;
@@ -61,18 +62,19 @@ static void consumer(int id, int n)
         }
 		hasTransaction = true;
 		theProducer.notify_one();
-		if (n == 0) return;
     }
 }
 
 static void producer()
 {
     int min = 2500, max = 5000;
-    default_random_engine eng(random_device());
+    random_device randev;
+    default_random_engine eng(randev());
     uniform_int_distribution dist(min, max);
 	unique_lock<mutex> ul(mut);
-    while (!marketClosed)
+    while (true)
     {
+        if (marketClosed) return;
         if (needProduce)
         {
             shared = dist(eng);
@@ -89,7 +91,8 @@ static void producer()
 int main()
 {
     int min = 2, max = 5;
-    default_random_engine eng(random_device());
+    random_device randev;
+    default_random_engine eng(randev());
     uniform_int_distribution dist(min, max);
     vector<jthread> consumers;
     int transactions = 3;

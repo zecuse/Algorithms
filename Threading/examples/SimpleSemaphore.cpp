@@ -6,9 +6,9 @@
 
 using namespace std;
 
+int shared = 0;
 binary_semaphore consume { 0 };
 binary_semaphore produce { 1 };
-int shared = 0;
 
 static void output(string msg, int data)
 {
@@ -28,7 +28,8 @@ static void consumer(int n)
 static void producer(int n)
 {
     int min = 1, max = 1000;
-    default_random_engine eng(random_device());
+    random_device randev;
+    default_random_engine eng(randev());
     uniform_int_distribution dist(min, max);
     while (n-- > 0)
     {

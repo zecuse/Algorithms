@@ -7,10 +7,10 @@
 
 using namespace std;
 
+int shared = 0;
 mutex mut;
 condition_variable cv;
 bool ready = false;
-int shared = 0;
 
 static void output(string msg, int data)
 {
@@ -32,7 +32,8 @@ static void consumer(int n)
 static void producer(int n)
 {
     int min = 1, max = 1000;
-    default_random_engine eng(random_device());
+    random_device randev;
+    default_random_engine eng(randev());
     uniform_int_distribution dist(min, max);
 	unique_lock<mutex> ul(mut);
     while (n-- > 0)
