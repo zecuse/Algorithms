@@ -35,8 +35,7 @@ static void output(S msg, I data, Args... args)
 static void consumer(int id, int n)
 {
     int min = 1, max = 1000;
-    random_device randev;
-    default_random_engine eng(randev());
+    default_random_engine eng(random_device());
     uniform_int_distribution dist(min, max);
     unique_lock<mutex> ul(mut);
     int want = 0, debt = 0;
@@ -69,8 +68,7 @@ static void consumer(int id, int n)
 static void producer()
 {
     int min = 2500, max = 5000;
-    random_device randev;
-    default_random_engine eng(randev());
+    default_random_engine eng(random_device());
     uniform_int_distribution dist(min, max);
 	unique_lock<mutex> ul(mut);
     while (!marketClosed)
@@ -91,8 +89,7 @@ static void producer()
 int main()
 {
     int min = 2, max = 5;
-    random_device randev;
-    default_random_engine eng(randev());
+    default_random_engine eng(random_device());
     uniform_int_distribution dist(min, max);
     vector<jthread> consumers;
     int transactions = 3;

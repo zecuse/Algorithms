@@ -2,6 +2,7 @@
 #include <iostream>
 #include <format>
 #include <mutex>
+#include <random>
 #include <thread>
 
 using namespace std;
@@ -30,11 +31,13 @@ static void consumer(int n)
 
 static void producer(int n)
 {
-    srand(time(nullptr));
+    int min = 1, max = 1000;
+    default_random_engine eng(random_device());
+    uniform_int_distribution dist(min, max);
 	unique_lock<mutex> ul(mut);
     while (n-- > 0)
     {
-        shared = rand() % 1000;
+        shared = dist(eng);
         output("produced:", shared);
         ready = true;
         cv.notify_one();
